@@ -23,13 +23,13 @@ public class StaffLoginPage {
 
     private void createSignInPage() {
         // Create the logo image view
-        Image logoImage = new Image("logo.jpg"); 
-        ImageView logoImageView = new ImageView(logoImage); 
-        logoImageView.setFitWidth(220);
-        logoImageView.setFitHeight(220);
+   //     Image logoImage = new Image("logo.jpg"); 
+   //     ImageView logoImageView = new ImageView(logoImage); 
+   //     logoImageView.setFitWidth(220);
+   //     logoImageView.setFitHeight(220);
 
-        Label titleLabel = new Label("Staff Login");
-        titleLabel.getStyleClass().add("title-label");
+   //     Label titleLabel = new Label("Staff Login");
+   //     titleLabel.getStyleClass().add("title-label");
         
         // Create the text fields
         TextField usernameTextField = new TextField();
@@ -54,7 +54,7 @@ public class StaffLoginPage {
         VBox signInBox = new VBox(10);
         signInBox.setAlignment(Pos.CENTER);
         signInBox.setSpacing(20);
-        signInBox.getChildren().addAll(titleLabel, usernameTextField, buttonBox);
+   //     signInBox.getChildren().addAll(titleLabel, usernameTextField, buttonBox);
 
         // Create the home button
         Button homeButton = new Button("Home");
@@ -67,24 +67,32 @@ public class StaffLoginPage {
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);
         });
+        
+        loginButton.setOnAction(e -> {
+            // Handle patient login button click
+        	StaffPortal staffPortal = new StaffPortal(primaryStage);
+            primaryStage.setScene(new Scene(staffPortal.getRoot(), 900, 600));
+            primaryStage.setResizable(false);
+            primaryStage.setFullScreen(false);
+        });
 
         // Create a VBox for the home button and sign-in content
         VBox topBox = new VBox(10);
         topBox.setAlignment(Pos.TOP_LEFT);
         topBox.setPadding(new Insets(50, 0, 0, 50));
-        topBox.getChildren().addAll(homeButton);
+        topBox.getChildren().addAll(homeButton, loginButton);
 
         // Create a BorderPane to hold the logo, sign-in content, and home button
         root = new GridPane();
         root.setHgap(50);
         root.setVgap(100);
         root.setPadding(new Insets(10));
-        root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    //    root.getStylesheets().add(getClass().getResource("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\application.css").toExternalForm());
         root.add(topBox, 0, 0);
         root.add(signInBox, 1, 1);
         GridPane.setMargin(signInBox, new Insets(-50, 0, 0, 80));
-        root.add(logoImageView, 2, 0, 1, 3);
-        GridPane.setMargin(logoImageView, new Insets(-100, 0, 0, 0));
+   //     root.add(logoImageView, 2, 0, 1, 3);
+   //     GridPane.setMargin(logoImageView, new Insets(-100, 0, 0, 0));
     }
 
     public GridPane getRoot() {
