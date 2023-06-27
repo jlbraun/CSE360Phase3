@@ -1,0 +1,79 @@
+package application;
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class UpdatePatientInfoStaff {
+
+    private VBox root;
+    private Stage primaryStage;
+
+    public UpdatePatientInfoStaff(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        createPatientPortal();
+    }
+
+    private void createPatientPortal() {
+    	
+    	
+        // Create the buttons
+        Button updateButtonPhone = new Button("Update Phone Number");
+        Button updateButtonInsurance = new Button("Update Insurance Information");
+        Button updateButtonPharmacy = new Button("Update Pharmacy Information");
+        Button returnButton = new Button("Return to Staff Portal");
+
+        // Add event handlers for the buttons
+        //messageButton.setOnAction(e -> {
+            // Handle staff login button click
+            //StaffLoginPage staffLoginPage = new StaffLoginPage(primaryStage);
+            //primaryStage.setScene(new Scene(staffLoginPage.getRoot(), 900, 600));
+            //primaryStage.setResizable(false);
+            //primaryStage.setFullScreen(false);
+        //});
+        
+        //viewInfo will open text file in first iteration, bonus points for view only
+        //viewInfoButton.setOnAction(e -> {
+            // Handle patient login button click
+        //    PatientLoginPage patientLoginPage = new PatientLoginPage(primaryStage);
+        //    primaryStage.setScene(new Scene(patientLoginPage.getRoot(), 900, 600));
+        //    primaryStage.setResizable(false);
+        //    primaryStage.setFullScreen(false);
+        //});
+        
+        //updateInfoButton.setOnAction(e -> {
+            // Handle patient login button click
+            //PatientLoginPage patientLoginPage = new PatientLoginPage(primaryStage);
+            //primaryStage.setScene(new Scene(patientLoginPage.getRoot(), 900, 600));
+            //primaryStage.setResizable(false);
+            //primaryStage.setFullScreen(false);
+        //});
+        
+        returnButton.setOnAction(e -> {
+            // Handle patient login button click
+        	StaffPortal staffPortal = new StaffPortal(primaryStage);
+            primaryStage.setScene(new Scene(staffPortal.getRoot(), 900, 600));
+            primaryStage.setResizable(false);
+            primaryStage.setFullScreen(false);
+        });
+
+        // Create a VBox to hold the buttons
+        root = new VBox(20);
+        root.setAlignment(Pos.CENTER);
+//        root.setPadding(new Insets(20));
+        root.getChildren().addAll(updateButtonPhone, updateButtonInsurance, updateButtonPharmacy, returnButton);
+        //root.getStylesheets().add(getClass().getResource("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\application.css").toExternalForm());
+
+        // Set spacing between the buttons
+        //VBox.setMargin(updateButtonPhone, new Insets(10, 0, 0, 0));
+    }
+
+    public VBox getRoot() {
+        return root;
+    }
+}
