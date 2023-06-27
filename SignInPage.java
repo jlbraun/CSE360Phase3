@@ -22,23 +22,23 @@ public class SignInPage {
     private void createSignInPage() {
     	
     	// Logo
-    	Image signInImage = new Image("signin.jpg"); 
-        ImageView signInImageView = new ImageView(signInImage);
-        signInImageView.setFitWidth(250); // Adjust the desired width
-        signInImageView.setFitHeight(250); // Adjust the desired height
-        signInImageView.setStyle("-fx-background-color: red;");
+//    	Image signInImage = new Image("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\signin.jpg");
+//        ImageView signInImageView = new ImageView(signInImage);
+//        signInImageView.setFitWidth(250); // Adjust the desired width
+//        signInImageView.setFitHeight(250); // Adjust the desired height
+//        signInImageView.setStyle("-fx-background-color: red;");
     	
         // Create the buttons
         Button staffLoginButton = new Button("Staff Login");
         Button patientLoginButton = new Button("Patient Login");
 
-        // Add a custom CSS class to the buttons
-        staffLoginButton.getStyleClass().add("light-button");
-        patientLoginButton.getStyleClass().add("light-button");
-
-        // Apply CSS style for bold text
-        staffLoginButton.setStyle("-fx-font-weight: bold;");
-        patientLoginButton.setStyle("-fx-font-weight: bold;");
+//        // Add a custom CSS class to the buttons
+//        staffLoginButton.getStyleClass().add("light-button");
+//        patientLoginButton.getStyleClass().add("light-button");
+//
+//        // Apply CSS style for bold text
+//        staffLoginButton.setStyle("-fx-font-weight: bold;");
+//        patientLoginButton.setStyle("-fx-font-weight: bold;");
 
         // Add event handlers for the buttons
         staffLoginButton.setOnAction(e -> {
@@ -61,8 +61,8 @@ public class SignInPage {
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
 //        root.setPadding(new Insets(20));
-        root.getChildren().addAll(signInImageView, staffLoginButton, patientLoginButton);
-        root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        root.getChildren().addAll(staffLoginButton, patientLoginButton);
+        //root.getStylesheets().add(getClass().getResource("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\application.css").toExternalForm());
 
         // Set spacing between the buttons
         VBox.setMargin(staffLoginButton, new Insets(10, 0, 0, 0));
