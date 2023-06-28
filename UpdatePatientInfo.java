@@ -13,9 +13,11 @@ public class UpdatePatientInfo {
 
     private VBox root;
     private Stage primaryStage;
+    private String username;
 
-    public UpdatePatientInfo(Stage primaryStage) {
+    public UpdatePatientInfo(Stage primaryStage, String username) {
         this.primaryStage = primaryStage;
+        this.username = username;
         createPatientPortal();
     }
 
@@ -31,7 +33,7 @@ public class UpdatePatientInfo {
         // Add event handlers for the buttons
         returnButton.setOnAction(e -> {
             // Handle patient login button click
-        	PatientPortal patientPortal = new PatientPortal(primaryStage);
+        	PatientPortal patientPortal = new PatientPortal(primaryStage, username);
             primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);

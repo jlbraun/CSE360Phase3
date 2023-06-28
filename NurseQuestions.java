@@ -16,9 +16,11 @@ public class NurseQuestions {
 
     private VBox root;
     private Stage primaryStage;
+    private String username;
 
-    public NurseQuestions(Stage primaryStage) {
+    public NurseQuestions(Stage primaryStage, String username) {
         this.primaryStage = primaryStage;
+        this.username = username;
         createNurseQuestions();
     }
 
@@ -58,7 +60,7 @@ public class NurseQuestions {
         
         returnButton.setOnAction(e -> {
             // Handle patient login button click
-        	StaffPortal staffPortal = new StaffPortal(primaryStage);
+        	StaffPortal staffPortal = new StaffPortal(primaryStage, username);
             primaryStage.setScene(new Scene(staffPortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);

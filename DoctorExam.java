@@ -5,8 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
@@ -15,17 +13,20 @@ public class DoctorExam {
 
     private VBox root;
     private Stage primaryStage;
+    private String username;
 
-    public DoctorExam(Stage primaryStage) {
+    public DoctorExam(Stage primaryStage, String username) {
         this.primaryStage = primaryStage;
-        createPatientPortal();
+        this.username = username;
+        createDoctorExam();
     }
 
-    private void createPatientPortal() {
+
+    private void createDoctorExam() {
     	
     	
         // Create the buttons
-        Button sendMessageButton = new Button("Add information to file/nursequestions/");
+        Button addInformation = new Button("Add information to file/nursequestions/");
         Button returnButton = new Button("Return to Patient Portal");
         
         Text examTitle = new Text();
@@ -33,14 +34,14 @@ public class DoctorExam {
         Text examLabel = new Text();
         examLabel.setText("Add patient information to file:");
         
-        TextField nurseQuestions = new TextField();
-        nurseQuestions.setMaxWidth(800);
+        TextField doctorQuestions = new TextField();
+        doctorQuestions.setMaxWidth(800);
         
 
         // Add event handlers for the buttons
         returnButton.setOnAction(e -> {
             // Handle patient login button click
-        	StaffPortal patientPortal = new StaffPortal(primaryStage);
+        	StaffPortal patientPortal = new StaffPortal(primaryStage, username);
             primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);
@@ -49,7 +50,7 @@ public class DoctorExam {
         // Create a VBox to hold the buttons
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(examTitle, examLabel, nurseQuestions, sendMessageButton, returnButton);
+        root.getChildren().addAll(examTitle, examLabel, doctorQuestions, addInformation, returnButton);
         //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Set spacing between the buttons

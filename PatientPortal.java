@@ -15,11 +15,6 @@ public class PatientPortal {
     private Stage primaryStage;
     private String username;
 
-    public PatientPortal(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        createPatientPortal();
-    }
-
     public PatientPortal(Stage primaryStage, String username) {
         this.primaryStage = primaryStage;
         this.username = username;
@@ -38,7 +33,7 @@ public class PatientPortal {
         // Add event handlers for the buttons
         messageButton.setOnAction(e -> {
             // Handle staff login button click
-            MessagePortal messagePortal = new MessagePortal(primaryStage);
+            MessagePortal messagePortal = new MessagePortal(primaryStage, username);
             primaryStage.setScene(new Scene(messagePortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);
@@ -55,7 +50,7 @@ public class PatientPortal {
         
         updateInfoButton.setOnAction(e -> {
             // Handle patient login button click
-            UpdatePatientInfo updatePatientInfo = new UpdatePatientInfo(primaryStage);
+            UpdatePatientInfo updatePatientInfo = new UpdatePatientInfo(primaryStage, username);
             primaryStage.setScene(new Scene(updatePatientInfo.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);

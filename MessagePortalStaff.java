@@ -1,11 +1,8 @@
 package prototype.demo;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -13,13 +10,15 @@ public class MessagePortalStaff {
 
     private VBox root;
     private Stage primaryStage;
+    private String username;
 
-    public MessagePortalStaff(Stage primaryStage) {
+    public MessagePortalStaff(Stage primaryStage, String username) {
         this.primaryStage = primaryStage;
-        createPatientPortal();
+        this.username = username;
+        createStaffMessagePortal();
     }
 
-    private void createPatientPortal() {
+    private void createStaffMessagePortal() {
     	
     	
         // Create the buttons
@@ -37,7 +36,7 @@ public class MessagePortalStaff {
         
         returnButton.setOnAction(e -> {
             // Handle patient login button click
-        	StaffPortal staffPortal = new StaffPortal(primaryStage);
+        	StaffPortal staffPortal = new StaffPortal(primaryStage, username);
             primaryStage.setScene(new Scene(staffPortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);

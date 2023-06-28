@@ -17,9 +17,11 @@ public class NurseExam {
 
     private GridPane root;
     private Stage primaryStage;
+    private String username;
 
-    public NurseExam(Stage primaryStage) {
+    public NurseExam(Stage primaryStage, String username) {
         this.primaryStage = primaryStage;
+        this.username = username;
         createNurseExam();
     }
 
@@ -28,7 +30,7 @@ public class NurseExam {
         Button addExamInformation = new Button("Add information to file/nursequestions/");
         Button returnButton = new Button("Return to Patient Portal");
 
-        Text patientUsernameText = new Text("Patient Username: ");
+        //Text patientUsernameText = new Text("Patient Username: ");
         Text questionTitle = new Text();
         questionTitle.setText("Nurse Examination:");
         
@@ -41,8 +43,8 @@ public class NurseExam {
         Text temperatureText = new Text();
         temperatureText.setText("Body Temperature: ");
 
-        TextField patientUsernameField = new TextField();
-        patientUsernameField.setMaxWidth(400);
+        //TextField patientUsernameField = new TextField();
+        //patientUsernameField.setMaxWidth(400);
         TextField heightField = new TextField();
         heightField.setMaxWidth(400);
         TextField weightField = new TextField();
@@ -57,18 +59,18 @@ public class NurseExam {
             File file;
             PatientFiles patientFiles = new PatientFiles();
             try {
-                file = patientFiles.createPatientInfoFile(patientUsernameField.getText());
+                file = patientFiles.createPatientInfoFile(username);
             } catch (IOException ex) { throw new RuntimeException(ex); }
             if (file != null) {
                 try {
-                    patientFiles.saveNurseExamInfo(patientUsernameField.getText(), heightField.getText(), weightField.getText(), pressureField.getText(), temperatureField.getText());
+                    patientFiles.saveNurseExamInfo(username, heightField.getText(), weightField.getText(), pressureField.getText(), temperatureField.getText());
                 } catch (IOException ex) { throw new RuntimeException(ex); }
             }
         });
 
         returnButton.setOnAction(e -> {
             // Handle patient login button click
-        	StaffPortal patientPortal = new StaffPortal(primaryStage);
+        	StaffPortal patientPortal = new StaffPortal(primaryStage, username);
             primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);
@@ -77,12 +79,12 @@ public class NurseExam {
         // Create a VBox to hold the buttons
         VBox leftBox = new VBox(10);
         leftBox.setAlignment(Pos.TOP_LEFT);
-        leftBox.getChildren().addAll(patientUsernameText, heightText, weightText, pressureText, temperatureText);
+        leftBox.getChildren().addAll(heightText, weightText, pressureText, temperatureText);
 
 
         VBox centerBox = new VBox(10);
         centerBox.setAlignment(Pos.CENTER);
-        centerBox.getChildren().addAll(questionTitle, patientUsernameField, heightField, weightField, pressureField, temperatureField, addExamInformation, returnButton);
+        centerBox.getChildren().addAll(questionTitle, heightField, weightField, pressureField, temperatureField, addExamInformation, returnButton);
         //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
      // Create a BorderPane to hold the logo, sign-in content, and home button
@@ -94,7 +96,6 @@ public class NurseExam {
         root.add(leftBox, 1, 1);
         root.add(centerBox, 2, 1);
 
-        VBox.setMargin(patientUsernameText, new Insets(30, 0, 0, 150));
         VBox.setMargin(heightText, new Insets(10, 0, 0, 150));
         VBox.setMargin(weightText, new Insets(10, 0, 0, 150));
         VBox.setMargin(pressureText, new Insets(10, 0, 0, 150));

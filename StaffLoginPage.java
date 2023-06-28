@@ -22,26 +22,14 @@ public class StaffLoginPage {
     }
 
     private void createSignInPage() {
-//        // Create the logo image view
-//        Image logoImage = new Image("logo.jpg");
-//        ImageView logoImageView = new ImageView(logoImage);
-//        logoImageView.setFitWidth(220);
-//        logoImageView.setFitHeight(220);
-//
-//        Label titleLabel = new Label("Patient Login");
-//        titleLabel.getStyleClass().add("title-label");
-        
         // Create the text fields
         TextField usernameTextField = new TextField();
         usernameTextField.setPromptText("Username");
         usernameTextField.setMaxWidth(200);
-        //usernameTextField.getStyleClass().add("username-text-field");
 
         // Create the buttons
         Button loginButton = new Button("Login");
         Button createAccountButton = new Button("Create Account");
-        //loginButton.getStyleClass().add("dark-button");
-        //createAccountButton.getStyleClass().add("light-button");
 
         // Create an HBox for the buttons
         VBox buttonBox = new VBox(10);
@@ -58,7 +46,6 @@ public class StaffLoginPage {
 
         // Create the home button
         Button homeButton = new Button("Home");
-        homeButton.getStyleClass().add("dark-button");
         homeButton.setOnAction(e -> {
             // Handle home button click
             // Logic to navigate to home page
@@ -70,7 +57,7 @@ public class StaffLoginPage {
         
         loginButton.setOnAction(e -> {
             // Handle staff login button click
-            StaffPortal staffPortal = new StaffPortal(primaryStage);
+            StaffPortal staffPortal = new StaffPortal(primaryStage, usernameTextField.getText());
             primaryStage.setScene(new Scene(staffPortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);

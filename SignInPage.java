@@ -20,25 +20,9 @@ public class SignInPage {
     }
 
     private void createSignInPage() {
-    	
-    	// Logo
-//    	Image signInImage = new Image("signin.jpg");
-//        ImageView signInImageView = new ImageView(signInImage);
-//        signInImageView.setFitWidth(250); // Adjust the desired width
-//        signInImageView.setFitHeight(250); // Adjust the desired height
-//        signInImageView.setStyle("-fx-background-color: red;");
-    	
         // Create the buttons
         Button staffLoginButton = new Button("Staff Login");
         Button patientLoginButton = new Button("Patient Login");
-
-//        // Add a custom CSS class to the buttons
-//        staffLoginButton.getStyleClass().add("light-button");
-//        patientLoginButton.getStyleClass().add("light-button");
-//
-//        // Apply CSS style for bold text
-//        staffLoginButton.setStyle("-fx-font-weight: bold;");
-//        patientLoginButton.setStyle("-fx-font-weight: bold;");
 
         // Add event handlers for the buttons
         staffLoginButton.setOnAction(e -> {
