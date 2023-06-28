@@ -9,12 +9,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class CreatePatientAccount {
+public class MessagePortal {
 
     private VBox root;
     private Stage primaryStage;
 
-    public CreatePatientAccount(Stage primaryStage) {
+    public MessagePortal(Stage primaryStage) {
         this.primaryStage = primaryStage;
         createPatientPortal();
     }
@@ -23,11 +23,11 @@ public class CreatePatientAccount {
     	
     	
         // Create the buttons
-        Button CreateAccountButton = new Button("Create Account");
-        Button exitButton = new Button("Exit");
+        Button sendMessageButton = new Button("Send Message");
+        Button returnButton = new Button("Return to Patient Portal");
 
         // Add event handlers for the buttons
-        //CreateAccountButton.setOnAction(e -> {
+        //sendMessageButton.setOnAction(e -> {
             // Handle staff login button click
         //    StaffLoginPage staffLoginPage = new StaffLoginPage(primaryStage);
         //    primaryStage.setScene(new Scene(staffLoginPage.getRoot(), 900, 600));
@@ -35,10 +35,10 @@ public class CreatePatientAccount {
         //    primaryStage.setFullScreen(false);
         //});
         
-        exitButton.setOnAction(e -> {
+        returnButton.setOnAction(e -> {
             // Handle patient login button click
-        	SignInPage signInPage = new SignInPage(primaryStage);
-            primaryStage.setScene(new Scene(signInPage.getRoot(), 900, 600));
+        	PatientPortal patientPortal = new PatientPortal(primaryStage);
+            primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);
         });
@@ -47,8 +47,8 @@ public class CreatePatientAccount {
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
 //        root.setPadding(new Insets(20));
-        root.getChildren().addAll(CreateAccountButton, exitButton);
-        //root.getStylesheets().add(getClass().getResource("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\application.css").toExternalForm());
+        root.getChildren().addAll(sendMessageButton, returnButton);
+        //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Set spacing between the buttons
         //VBox.setMargin(viewInfoButton, new Insets(10, 0, 0, 0));

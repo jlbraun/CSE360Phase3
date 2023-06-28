@@ -23,7 +23,7 @@ public class PatientLoginPage {
 
     private void createSignInPage() {
 //        // Create the logo image view
-//        Image logoImage = new Image("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\logo.jpg");
+//        Image logoImage = new Image("logo.jpg");
 //        ImageView logoImageView = new ImageView(logoImage);
 //        logoImageView.setFitWidth(220);
 //        logoImageView.setFitHeight(220);
@@ -95,7 +95,7 @@ public class PatientLoginPage {
         root.setHgap(50);
         root.setVgap(100);
         root.setPadding(new Insets(10));
-        //root.getStylesheets().add(getClass().getResource("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\application.css").toExternalForm());
+        //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         root.add(topBox, 0, 0);
         root.add(signInBox, 1, 1);
         GridPane.setMargin(signInBox, new Insets(-50, 0, 0, 30));

@@ -22,7 +22,7 @@ public class SignInPage {
     private void createSignInPage() {
     	
     	// Logo
-//    	Image signInImage = new Image("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\signin.jpg");
+//    	Image signInImage = new Image("signin.jpg");
 //        ImageView signInImageView = new ImageView(signInImage);
 //        signInImageView.setFitWidth(250); // Adjust the desired width
 //        signInImageView.setFitHeight(250); // Adjust the desired height
@@ -62,7 +62,7 @@ public class SignInPage {
         root.setAlignment(Pos.CENTER);
 //        root.setPadding(new Insets(20));
         root.getChildren().addAll(staffLoginButton, patientLoginButton);
-        //root.getStylesheets().add(getClass().getResource("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\application.css").toExternalForm());
+        //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Set spacing between the buttons
         VBox.setMargin(staffLoginButton, new Insets(10, 0, 0, 0));

@@ -67,7 +67,7 @@ public class UpdatePatientInfoStaff {
         root.setAlignment(Pos.CENTER);
 //        root.setPadding(new Insets(20));
         root.getChildren().addAll(updateButtonPhone, updateButtonInsurance, updateButtonPharmacy, returnButton);
-        //root.getStylesheets().add(getClass().getResource("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\application.css").toExternalForm());
+        //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Set spacing between the buttons
         //VBox.setMargin(updateButtonPhone, new Insets(10, 0, 0, 0));

@@ -11,24 +11,30 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class SignIn extends Application {
+public class SignIn {
+    private VBox root;
+    private Stage primaryStage;
 
-    @Override
-    public void start(Stage primaryStage) {
+    public SignIn(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        createSignIn();
+    }
+
+    public void createSignIn() {
         // Create the logo image view
-        Image signInImage = new Image("signin.jpg"); // Replace "path_to_logo_image.png" with the actual path to your logo image
-        ImageView signInImageView = new ImageView(signInImage);
-        signInImageView.setFitWidth(250); // Adjust the desired width
-        signInImageView.setFitHeight(250); // Adjust the desired height
-        signInImageView.setStyle("-fx-background-color: red;");
+//        Image signInImage = new Image("signin.jpg"); // Replace "path_to_logo_image.png" with the actual path to your logo image
+//        ImageView signInImageView = new ImageView(signInImage);
+//        signInImageView.setFitWidth(250); // Adjust the desired width
+//        signInImageView.setFitHeight(250); // Adjust the desired height
+//        signInImageView.setStyle("-fx-background-color: red;");
 
 
         // Create the buttons
         Button staffLoginButton = new Button("Staff Login");
         Button patientLoginButton = new Button("Patient Login");
         
-        staffLoginButton.getStyleClass().add("custom-button");
-        patientLoginButton.getStyleClass().add("custom-button");
+//        staffLoginButton.getStyleClass().add("custom-button");
+//        patientLoginButton.getStyleClass().add("custom-button");
         
 
         // Add event handlers for the buttons
@@ -44,12 +50,12 @@ public class SignIn extends Application {
         // Create the layout
         VBox root = new VBox(10);
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(signInImageView, staffLoginButton, patientLoginButton);
+        root.getChildren().addAll(staffLoginButton, patientLoginButton);
 //        VBox.setMargin(staffLoginButton, new Insets(10, 0, 0, 0));
 
         // Create the scene
         Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+//        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Set the stage properties
         primaryStage.setTitle("Sign In");
@@ -80,7 +86,7 @@ public class SignIn extends Application {
         loginStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public VBox getRoot() {
+        return root;
     }
 }

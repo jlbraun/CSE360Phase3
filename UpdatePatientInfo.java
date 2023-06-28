@@ -29,31 +29,6 @@ public class UpdatePatientInfo {
         Button returnButton = new Button("Return to Patient Portal");
 
         // Add event handlers for the buttons
-        //messageButton.setOnAction(e -> {
-            // Handle staff login button click
-            //StaffLoginPage staffLoginPage = new StaffLoginPage(primaryStage);
-            //primaryStage.setScene(new Scene(staffLoginPage.getRoot(), 900, 600));
-            //primaryStage.setResizable(false);
-            //primaryStage.setFullScreen(false);
-        //});
-        
-        //viewInfo will open text file in first iteration, bonus points for view only
-        //viewInfoButton.setOnAction(e -> {
-            // Handle patient login button click
-        //    PatientLoginPage patientLoginPage = new PatientLoginPage(primaryStage);
-        //    primaryStage.setScene(new Scene(patientLoginPage.getRoot(), 900, 600));
-        //    primaryStage.setResizable(false);
-        //    primaryStage.setFullScreen(false);
-        //});
-        
-        //updateInfoButton.setOnAction(e -> {
-            // Handle patient login button click
-            //PatientLoginPage patientLoginPage = new PatientLoginPage(primaryStage);
-            //primaryStage.setScene(new Scene(patientLoginPage.getRoot(), 900, 600));
-            //primaryStage.setResizable(false);
-            //primaryStage.setFullScreen(false);
-        //});
-        
         returnButton.setOnAction(e -> {
             // Handle patient login button click
         	PatientPortal patientPortal = new PatientPortal(primaryStage);
@@ -65,9 +40,8 @@ public class UpdatePatientInfo {
         // Create a VBox to hold the buttons
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
-//        root.setPadding(new Insets(20));
         root.getChildren().addAll(updateButtonPhone, updateButtonInsurance, updateButtonPharmacy, returnButton);
-        //root.getStylesheets().add(getClass().getResource("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\application.css").toExternalForm());
+        //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Set spacing between the buttons
         //VBox.setMargin(updateButtonPhone, new Insets(10, 0, 0, 0));

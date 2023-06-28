@@ -1,0 +1,84 @@
+package application;
+
+import javafx.geometry.Insets; 
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.scene.text.Text;
+
+import java.io.File;
+import java.io.IOException;
+
+public class NurseQuestions {
+
+    private VBox root;
+    private Stage primaryStage;
+
+    public NurseQuestions(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        createNurseQuestions();
+    }
+
+    private void createNurseQuestions() {
+        // Create the buttons
+        Button addInformation = new Button("Add information to file/nursequestions/");
+        Button returnButton = new Button("Return to Staff Portal");
+        
+        Text questionTitle = new Text();
+        questionTitle.setText("Nurse questionnaire:");
+        Text patientUsernameLabel = new Text();
+        patientUsernameLabel.setText("Patient Username: ");
+        Text questionLabel = new Text();
+        questionLabel.setText("Add patient information to file:");
+
+        TextField patientUsername = new TextField();
+        patientUsername.setMaxWidth(200);
+        TextField nurseQuestions = new TextField();
+        nurseQuestions.setMaxWidth(800);
+
+        
+
+        // Add event handlers for the buttons
+        addInformation.setOnAction(e -> {
+            File file;
+            PatientFiles patientFiles = new PatientFiles();
+            try  { file = patientFiles.createPatientQuestionFile(patientUsername.getText());
+            }
+            catch (IOException ex) { throw new RuntimeException(ex); }
+
+            if (file != null) {
+                try { patientFiles.saveQuestionInfo(patientUsername.getText(), nurseQuestions.getText());
+                }
+                catch (IOException ex) { throw new RuntimeException(ex); }
+            }
+        });
+        
+        returnButton.setOnAction(e -> {
+            // Handle patient login button click
+        	StaffPortal staffPortal = new StaffPortal(primaryStage);
+            primaryStage.setScene(new Scene(staffPortal.getRoot(), 900, 600));
+            primaryStage.setResizable(false);
+            primaryStage.setFullScreen(false);
+        });
+
+        // Create a VBox to hold the buttons
+        root = new VBox(20);
+        root.setAlignment(Pos.CENTER);
+//        root.setPadding(new Insets(20));
+        root.getChildren().addAll(questionTitle, patientUsernameLabel, patientUsername,  questionLabel, nurseQuestions, addInformation, returnButton);
+        //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+        // Set spacing between the buttons
+        VBox.setMargin(questionLabel, new Insets(10, 0, 0, 0));
+        VBox.setMargin(patientUsernameLabel, new Insets(10, 0, 0, 0));
+    }
+
+    public VBox getRoot() {
+        return root;
+    }
+}

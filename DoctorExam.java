@@ -11,12 +11,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
 
-public class NurseQuestions {
+public class DoctorExam {
 
     private VBox root;
     private Stage primaryStage;
 
-    public NurseQuestions(Stage primaryStage) {
+    public DoctorExam(Stage primaryStage) {
         this.primaryStage = primaryStage;
         createPatientPortal();
     }
@@ -28,24 +28,16 @@ public class NurseQuestions {
         Button sendMessageButton = new Button("Add information to file/nursequestions/");
         Button returnButton = new Button("Return to Patient Portal");
         
-        Text questionTitle = new Text();
-        questionTitle.setText("Nurse questionnaire:");
-        Text questionLabel = new Text();
-        questionLabel.setText("Add patient information to file:");
+        Text examTitle = new Text();
+        examTitle.setText("Doctor Examination:");
+        Text examLabel = new Text();
+        examLabel.setText("Add patient information to file:");
         
         TextField nurseQuestions = new TextField();
         nurseQuestions.setMaxWidth(800);
         
 
         // Add event handlers for the buttons
-        //sendMessageButton.setOnAction(e -> {
-            // Handle staff login button click
-        //    StaffLoginPage staffLoginPage = new StaffLoginPage(primaryStage);
-        //    primaryStage.setScene(new Scene(staffLoginPage.getRoot(), 900, 600));
-        //    primaryStage.setResizable(false);
-        //    primaryStage.setFullScreen(false);
-        //});
-        
         returnButton.setOnAction(e -> {
             // Handle patient login button click
         	StaffPortal patientPortal = new StaffPortal(primaryStage);
@@ -57,12 +49,11 @@ public class NurseQuestions {
         // Create a VBox to hold the buttons
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
-//        root.setPadding(new Insets(20));
-        root.getChildren().addAll(questionTitle, questionLabel, nurseQuestions, sendMessageButton, returnButton);
-        //root.getStylesheets().add(getClass().getResource("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\application.css").toExternalForm());
+        root.getChildren().addAll(examTitle, examLabel, nurseQuestions, sendMessageButton, returnButton);
+        //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Set spacing between the buttons
-        VBox.setMargin(questionLabel, new Insets(50, 0, 0, 0));
+        VBox.setMargin(examLabel, new Insets(50, 0, 0, 0));
     }
 
     public VBox getRoot() {
