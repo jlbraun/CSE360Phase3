@@ -1,0 +1,50 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root {
+    -fx-background-color: white;
+}
+
+.light-button {
+    -fx-text-fill: #0D6EFD;
+    -fx-font-weight: bolder;
+    -fx-border-color: #0D6EFD;
+    -fx-border-width: 1px;
+    -fx-background-color: white;
+    -fx-pref-width: 180px;
+    -fx-border-radius: 5px;
+}
+
+.light-button:hover {
+	 -fx-background-color: #0D6EFD;
+	 -fx-text-fill: white;
+}
+
+.dark-button {
+    -fx-font-weight: bolder;
+    -fx-border-color: #0D6EFD;
+    -fx-border-width: 1px;
+    -fx-pref-width: 80px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #0D6EFD;
+	-fx-text-fill: white;
+}
+
+.dark-button:hover {
+	-fx-background-color: white;
+	 -fx-text-fill: #0D6EFD;
+}
+
+.title-label{
+	-fx-font-weight: 200;
+	-fx-font-size: 70px;
+	-fx-font-family: "Calibri";
+	-fx-text-fill: #0D6EFD;
+	-fx-padding: 10px;
+}
+
+.username-text-field {
+    -fx-padding: 10px;
+    -fx-border-color: #0D6EFD;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
