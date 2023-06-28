@@ -1,4 +1,4 @@
-package application;
+package prototype.demo;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,9 +13,16 @@ public class PatientPortal {
 
     private VBox root;
     private Stage primaryStage;
+    private String username;
 
     public PatientPortal(Stage primaryStage) {
         this.primaryStage = primaryStage;
+        createPatientPortal();
+    }
+
+    public PatientPortal(Stage primaryStage, String username) {
+        this.primaryStage = primaryStage;
+        this.username = username;
         createPatientPortal();
     }
 

@@ -1,4 +1,4 @@
-package application;
+package prototype.demo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -58,7 +58,6 @@ public class PatientLoginPage {
 
         // Create the home button
         Button homeButton = new Button("Home");
-        homeButton.getStyleClass().add("dark-button");
         homeButton.setOnAction(e -> {
             // Handle home button click
             // Logic to navigate to home page
@@ -69,15 +68,23 @@ public class PatientLoginPage {
         });
         
         loginButton.setOnAction(e -> {
-            // Handle staff login button click
-            PatientPortal patientPortal = new PatientPortal(primaryStage);
-            primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
-            primaryStage.setResizable(false);
-            primaryStage.setFullScreen(false);
+            // Handle login button click
+            if (!usernameTextField.equals("")) {
+                PatientFiles patientFiles = new PatientFiles();
+
+                if (patientFiles.getPatientInfoFile(usernameTextField.getText()) != null) {
+                    PatientPortal patientPortal = new PatientPortal(primaryStage, usernameTextField.getText());
+                    primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
+                    primaryStage.setResizable(false);
+                    primaryStage.setFullScreen(false);
+                }
+
+            }
+
         });
         
         createAccountButton.setOnAction(e -> {
-            // Handle staff login button click
+            // Handle create account button click
             CreatePatientAccount createPatientAccount = new CreatePatientAccount(primaryStage);
             primaryStage.setScene(new Scene(createPatientAccount.getRoot(), 900, 600));
             primaryStage.setResizable(false);

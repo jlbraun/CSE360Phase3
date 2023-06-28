@@ -1,12 +1,10 @@
-package application;
+package prototype.demo;
 
 import javafx.geometry.Insets; 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
@@ -47,7 +45,7 @@ public class NurseQuestions {
         addInformation.setOnAction(e -> {
             File file;
             PatientFiles patientFiles = new PatientFiles();
-            try  { file = patientFiles.createPatientQuestionFile(patientUsername.getText());
+            try  { file = patientFiles.createPatientInfoFile(patientUsername.getText());
             }
             catch (IOException ex) { throw new RuntimeException(ex); }
 

@@ -1,4 +1,4 @@
-package application;
+package prototype.demo;
 
 import javafx.geometry.Insets; 
 import javafx.geometry.Pos;
@@ -57,7 +57,7 @@ public class NurseExam {
             File file;
             PatientFiles patientFiles = new PatientFiles();
             try {
-                file = patientFiles.createPatientQuestionFile(patientUsernameField.getText());
+                file = patientFiles.createPatientInfoFile(patientUsernameField.getText());
             } catch (IOException ex) { throw new RuntimeException(ex); }
             if (file != null) {
                 try {

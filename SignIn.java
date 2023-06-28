@@ -1,5 +1,5 @@
 //THIS IS NOT A USED FILE IT IS PROTOTYPE ONLY YOU DO NOT NEED IT
-package application;
+package prototype.demo;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
