@@ -1,4 +1,4 @@
-package prototype.demo;
+package application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,25 +23,25 @@ public class PatientLoginPage {
 
     private void createSignInPage() {
 //        // Create the logo image view
-//        Image logoImage = new Image("logo.jpg");
-//        ImageView logoImageView = new ImageView(logoImage);
-//        logoImageView.setFitWidth(220);
-//        logoImageView.setFitHeight(220);
-//
-//        Label titleLabel = new Label("Patient Login");
-//        titleLabel.getStyleClass().add("title-label");
+        Image logoImage = new Image("logo.jpg");
+        ImageView logoImageView = new ImageView(logoImage);
+        logoImageView.setFitWidth(220);
+        logoImageView.setFitHeight(220);
+
+        Label titleLabel = new Label("Patient Login");
+        titleLabel.getStyleClass().add("title-label");
         
         // Create the text fields
         TextField usernameTextField = new TextField();
         usernameTextField.setPromptText("Username");
         usernameTextField.setMaxWidth(200);
-        //usernameTextField.getStyleClass().add("username-text-field");
+        usernameTextField.getStyleClass().add("username-text-field");
 
         // Create the buttons
         Button loginButton = new Button("Login");
         Button createAccountButton = new Button("Create Account");
-        //loginButton.getStyleClass().add("dark-button");
-        //createAccountButton.getStyleClass().add("light-button");
+        loginButton.getStyleClass().add("dark-button");
+        createAccountButton.getStyleClass().add("light-button");
 
         // Create an HBox for the buttons
         VBox buttonBox = new VBox(10);
@@ -54,10 +54,11 @@ public class PatientLoginPage {
         VBox signInBox = new VBox(10);
         signInBox.setAlignment(Pos.CENTER);
         signInBox.setSpacing(20);
-        signInBox.getChildren().addAll(usernameTextField, buttonBox);
+        signInBox.getChildren().addAll(titleLabel, usernameTextField, buttonBox);
 
         // Create the home button
         Button homeButton = new Button("Home");
+        homeButton.getStyleClass().add("dark-button");
         homeButton.setOnAction(e -> {
             // Handle home button click
             // Logic to navigate to home page
@@ -70,14 +71,14 @@ public class PatientLoginPage {
         loginButton.setOnAction(e -> {
             // Handle login button click
             if (!usernameTextField.equals("")) {
-                PatientFiles patientFiles = new PatientFiles();
-
-                if (patientFiles.getPatientInfoFile(usernameTextField.getText()) != null) {
+//                PatientFiles patientFiles = new PatientFiles();
+                // bypass check
+//                if (patientFiles.getPatientInfoFile(usernameTextField.getText()) != null) {
                     PatientPortal patientPortal = new PatientPortal(primaryStage, usernameTextField.getText());
                     primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
                     primaryStage.setResizable(false);
                     primaryStage.setFullScreen(false);
-                }
+//                }
 
             }
 
@@ -102,12 +103,12 @@ public class PatientLoginPage {
         root.setHgap(50);
         root.setVgap(100);
         root.setPadding(new Insets(10));
-        //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         root.add(topBox, 0, 0);
         root.add(signInBox, 1, 1);
         GridPane.setMargin(signInBox, new Insets(-50, 0, 0, 30));
-        //root.add(logoImageView, 2, 0, 1, 3);
-        //GridPane.setMargin(logoImageView, new Insets(-100, 0, 0, 0));
+        root.add(logoImageView, 2, 0, 1, 3);
+        GridPane.setMargin(logoImageView, new Insets(-100, 0, 0, 0));
     }
 
     public GridPane getRoot() {
