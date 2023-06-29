@@ -48,3 +48,51 @@
     -fx-border-width: 1px;
     -fx-border-radius: 5px;
 }
+
+.create-patient-label{
+	-fx-font-weight: 200;
+	-fx-font-size: 50px;
+	-fx-font-family: "Calibri";
+	-fx-text-fill: #0D6EFD;
+	-fx-padding: 10px;
+}
+
+.create-account-button{
+	-fx-font-weight: bolder;
+    -fx-border-color: #0D6EFD;
+    -fx-border-width: 1px;
+    -fx-pref-width: 180px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #0D6EFD;
+	-fx-text-fill: white;
+}
+
+.create-account-button:hover {
+	-fx-background-color: white;
+	-fx-text-fill: #0D6EFD;
+}
+
+.patient-home{
+	-fx-font-weight: 200;
+	-fx-font-size: 50px;
+	-fx-font-family: "Calibri";
+	-fx-text-fill: #0D6EFD;
+	-fx-padding: 10px;
+}
+
+.patient-button{
+	-fx-pref-width: 220px;
+	-fx-font-size: 15px;
+}
+
+.contact{
+	-fx-background-color: grey;
+	-fx-min-width: 250px;
+	-fx-padding: 10px;
+	-fx-alignment: center;
+	-fx-font-size: 15px;
+}
+
+.contact-area{
+	-fx-background-color: grey;
+}
