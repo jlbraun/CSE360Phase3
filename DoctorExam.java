@@ -1,4 +1,4 @@
-package prototype.demo;
+package application;
 
 import javafx.geometry.Insets; 
 import javafx.geometry.Pos;
@@ -9,6 +9,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
 
+import java.io.File;
+import java.io.IOException;
+
 public class DoctorExam {
 
     private VBox root;
@@ -18,31 +21,47 @@ public class DoctorExam {
     public DoctorExam(Stage primaryStage, String username) {
         this.primaryStage = primaryStage;
         this.username = username;
-        createDoctorExam();
+        createNurseQuestions();
     }
 
-
-    private void createDoctorExam() {
-    	
-    	
+    private void createNurseQuestions() {
         // Create the buttons
         Button addInformation = new Button("Add information to file/nursequestions/");
-        Button returnButton = new Button("Return to Patient Portal");
+        Button returnButton = new Button("Return to Staff Portal");
         
-        Text examTitle = new Text();
-        examTitle.setText("Doctor Examination:");
-        Text examLabel = new Text();
-        examLabel.setText("Add patient information to file:");
-        
-        TextField doctorQuestions = new TextField();
-        doctorQuestions.setMaxWidth(800);
+        Text questionTitle = new Text();
+        questionTitle.setText("Nurse questionnaire:");
+        Text patientUsernameLabel = new Text();
+        patientUsernameLabel.setText("Patient Username: ");
+        Text questionLabel = new Text();
+        questionLabel.setText("Add patient information to file:");
+
+        TextField patientUsername = new TextField();
+        patientUsername.setMaxWidth(200);
+        TextField nurseQuestions = new TextField();
+        nurseQuestions.setMaxWidth(800);
+
         
 
         // Add event handlers for the buttons
+        addInformation.setOnAction(e -> {
+            File file;
+            PatientFiles patientFiles = new PatientFiles();
+            try  { file = patientFiles.createPatientInfoFile(patientUsername.getText());
+            }
+            catch (IOException ex) { throw new RuntimeException(ex); }
+
+            if (file != null) {
+                try { patientFiles.saveQuestionInfo(patientUsername.getText(), nurseQuestions.getText());
+                }
+                catch (IOException ex) { throw new RuntimeException(ex); }
+            }
+        });
+        
         returnButton.setOnAction(e -> {
             // Handle patient login button click
-        	StaffPortal patientPortal = new StaffPortal(primaryStage, username);
-            primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
+        	StaffPortal staffPortal = new StaffPortal(primaryStage, username);
+            primaryStage.setScene(new Scene(staffPortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);
         });
@@ -50,11 +69,13 @@ public class DoctorExam {
         // Create a VBox to hold the buttons
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(examTitle, examLabel, doctorQuestions, addInformation, returnButton);
+//        root.setPadding(new Insets(20));
+        root.getChildren().addAll(questionTitle, patientUsernameLabel, patientUsername,  questionLabel, nurseQuestions, addInformation, returnButton);
         //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Set spacing between the buttons
-        VBox.setMargin(examLabel, new Insets(50, 0, 0, 0));
+        VBox.setMargin(questionLabel, new Insets(10, 0, 0, 0));
+        VBox.setMargin(patientUsernameLabel, new Insets(10, 0, 0, 0));
     }
 
     public VBox getRoot() {
