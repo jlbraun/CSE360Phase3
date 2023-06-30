@@ -47,13 +47,6 @@ public class MessagePortal {
         returnButton.getStyleClass().add("dark-button");
         returnButton.setStyle("-fx-pref-width: 200;");
         
-        returnButton.setOnAction(e -> {
-            // Handle patient login button click
-        	PatientPortal patientPortal = new PatientPortal(primaryStage, username);
-            primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
-            primaryStage.setResizable(false);
-            primaryStage.setFullScreen(false);
-        });
         
         // Create GridPane layout
         GridPane messageBox = new GridPane();
@@ -73,23 +66,12 @@ public class MessagePortal {
         homeButton.setOnAction(e -> {
             // Handle home button click
             // Logic to navigate to home page
-        	SignInPage signInPage = new SignInPage(primaryStage);
-            primaryStage.setScene(new Scene(signInPage.getRoot(), 900, 600));
+        	PatientPortal patientPortal = new PatientPortal(primaryStage, username);
+            primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);
         });
       
-        Button logoutButton = new Button("Logout");
-        logoutButton.getStyleClass().add("light-button");
-        logoutButton.setStyle("-fx-pref-width: 80px;");
-        logoutButton.setOnAction(e -> {
-            // Handle home button click
-            // Logic to navigate to home page
-        	SignInPage signInPage = new SignInPage(primaryStage);
-            primaryStage.setScene(new Scene(signInPage.getRoot(), 900, 600));
-            primaryStage.setResizable(false);
-            primaryStage.setFullScreen(false);
-        });
         
         
 
@@ -107,11 +89,9 @@ public class MessagePortal {
         root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         root.add(topBox, 0, 0);
         root.add(titleLabel, 1, 0);
-        root.add(logoutButton, 2, 0);
         root.add(sendMessage, 0, 1);
         root.add(messageBox, 0, 2);
         GridPane.setMargin(titleLabel, new Insets(20, 20, 0, 50));
-        GridPane.setMargin(logoutButton, new Insets(30, 60, 0, 50));
         GridPane.setColumnSpan(messageBox, 2);
         GridPane.setMargin(messageBox, new Insets(-150, 0, 0, 0));
         GridPane.setMargin(sendMessage, new Insets(-150, 0, 0, 50));
