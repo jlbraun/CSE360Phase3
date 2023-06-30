@@ -32,13 +32,6 @@ public class UpdatePatientInfo {
 
     private void createPatientPortal() {
      
-        Button returnButton = new Button("Return to Patient Portal");
-        returnButton.setOnAction(e -> {
-        	PatientPortal patientPortal = new PatientPortal(primaryStage, username);
-            primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
-            primaryStage.setResizable(false);
-            primaryStage.setFullScreen(false);
-        });
         
         Label titleLabel = new Label("Update Patient\n   Information");
         titleLabel.getStyleClass().add("patient-home");
@@ -103,9 +96,6 @@ public class UpdatePatientInfo {
         rightPane.add(pharmacyUpdateButton, 2, 5);
         rightPane.setMinWidth(300);
         
-        rightPane.add(returnButton, 0, 6);
-        returnButton.getStyleClass().add("dark-button");
-        returnButton.setMinWidth(200);
         
         
         // Create GridPane
@@ -123,23 +113,13 @@ public class UpdatePatientInfo {
         homeButton.setOnAction(e -> {
             // Handle home button click
             // Logic to navigate to home page
-        	SignInPage signInPage = new SignInPage(primaryStage);
-            primaryStage.setScene(new Scene(signInPage.getRoot(), 900, 600));
+        	PatientPortal patientPortal = new PatientPortal(primaryStage, username);
+            primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);
         });
       
-        Button logoutButton = new Button("Logout");
-        logoutButton.getStyleClass().add("light-button");
-        logoutButton.setStyle("-fx-pref-width: 80px;");
-        logoutButton.setOnAction(e -> {
-            // Handle home button click
-            // Logic to navigate to home page
-        	SignInPage signInPage = new SignInPage(primaryStage);
-            primaryStage.setScene(new Scene(signInPage.getRoot(), 900, 600));
-            primaryStage.setResizable(false);
-            primaryStage.setFullScreen(false);
-        });
+        
 
         // Create a VBox for the home button and sign-in content
         VBox topBox = new VBox(10);
@@ -155,11 +135,10 @@ public class UpdatePatientInfo {
         root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         root.add(topBox, 0, 0);
         root.add(titleLabel, 1, 0);
-        root.add(logoutButton, 2, 0);
         root.add(mainPane, 0, 1);
         GridPane.setColumnSpan(mainPane, 2);
         GridPane.setMargin(titleLabel, new Insets(20, 20, 0, 60));
-        GridPane.setMargin(logoutButton, new Insets(-30, 60, 0, 0));
+
         setContactInformation();
 
     }
