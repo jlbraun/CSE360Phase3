@@ -51,10 +51,10 @@ public class PatientPortal {
         });
         
         viewPatientButton.setOnAction(e -> {
-        	UpdatePatientInfo update = new UpdatePatientInfo(primaryStage, username);
-        	primaryStage.setScene(new Scene(update.getRoot(), 900, 600));
-            primaryStage.setResizable(false);
-            primaryStage.setFullScreen(false);
+        	//UpdatePatientInfo update = new UpdatePatientInfo(primaryStage, username);
+        	//primaryStage.setScene(new Scene(update.getRoot(), 900, 600));
+            //primaryStage.setResizable(false);
+            //primaryStage.setFullScreen(false);
         });
         
         updatePatientButton.setOnAction(e -> {
@@ -71,17 +71,7 @@ public class PatientPortal {
         buttonBox.getChildren().addAll(messageButton, viewPatientButton, updatePatientButton);
       
 
-        // Create the home button
-        Button homeButton = new Button("Home");
-        homeButton.getStyleClass().add("dark-button");
-        homeButton.setOnAction(e -> {
-            // Handle home button click
-            // Logic to navigate to home page
-        	SignInPage signInPage = new SignInPage(primaryStage);
-            primaryStage.setScene(new Scene(signInPage.getRoot(), 900, 600));
-            primaryStage.setResizable(false);
-            primaryStage.setFullScreen(false);
-        });
+        
       
         Button logoutButton = new Button("Logout");
         logoutButton.getStyleClass().add("light-button");
@@ -99,7 +89,7 @@ public class PatientPortal {
         VBox topBox = new VBox(10);
         topBox.setAlignment(Pos.TOP_LEFT);
         topBox.setPadding(new Insets(50, 0, 0, 50));
-        topBox.getChildren().addAll(homeButton);
+
 
         // Create a BorderPane to hold the logo, sign-in content, and home button
         root = new GridPane();
