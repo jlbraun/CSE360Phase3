@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,28 +39,35 @@ public class CreatePatientAccount {
             primaryStage.setFullScreen(false);
         });
         
+        Text instructionsText = new Text();
+        instructionsText.setText("FirstnameLastnameDateofbirth");  
+        Text exampleText = new Text();
+        exampleText.setText("EX: JohnDoe0101 (jan1)");  
+        
         VBox topBox = new VBox(10);
         topBox.setAlignment(Pos.TOP_LEFT);
         topBox.setPadding(new Insets(50, 0, 0, 50));
         topBox.getChildren().addAll(homeButton);
-    	
+        
         Button createAccountButton = new Button("Create Account");
         createAccountButton.getStyleClass().add("create-account-button");
         
         Label titleLabel = new Label("Create Patient \n     Account");
         titleLabel.setWrapText(true);
         titleLabel.getStyleClass().add("create-patient-label");
-
+        
         Label usernameLabel = new Label("Enter username: ");
         TextField usernameField = new TextField();
-
+        
         GridPane inputBox = new GridPane();
         inputBox.setHgap(10); 
         inputBox.setVgap(10); 
         inputBox.setPadding(new Insets(10));
 
-        inputBox.add(usernameLabel, 0, 0); // Column 0, Row 0
-        inputBox.add(usernameField, 1, 0); // Column 1, Row 0
+        inputBox.add(usernameLabel, 0, 2); // Column 0, Row 0
+        inputBox.add(usernameField, 1, 2); // Column 1, Row 0
+        inputBox.add(instructionsText, 0, 0); // Column 0, Row 0
+        inputBox.add(exampleText, 0, 1); // Column 0, Row 0
         inputBox.add(createAccountButton, 1, 3);
         GridPane.setMargin(createAccountButton, new Insets(20, 0, 0, -20));
         
