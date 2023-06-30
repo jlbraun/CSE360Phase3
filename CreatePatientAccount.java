@@ -75,8 +75,8 @@ public class CreatePatientAccount {
     			} catch (IOException e1) {
     				e1.printStackTrace();
     			}
-                PatientPortal patientPortal = new PatientPortal(primaryStage, usernameField.getText());
-                primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
+                SignInPage signInPage = new SignInPage(primaryStage);
+                primaryStage.setScene(new Scene(signInPage.getRoot(), 900, 600));
                 primaryStage.setResizable(false);
                 primaryStage.setFullScreen(false);
             }
