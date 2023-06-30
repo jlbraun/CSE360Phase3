@@ -71,17 +71,18 @@ public class PatientLoginPage {
         loginButton.setOnAction(e -> {
             // Handle login button click
             if (!usernameTextField.equals("")) {
-//                PatientFiles patientFiles = new PatientFiles();
-                // bypass check
-//                if (patientFiles.getPatientInfoFile(usernameTextField.getText()) != null) {
+                PatientFiles patientFiles = new PatientFiles();
+                if (patientFiles.usernameExists(usernameTextField.getText())) {
                     PatientPortal patientPortal = new PatientPortal(primaryStage, usernameTextField.getText());
                     primaryStage.setScene(new Scene(patientPortal.getRoot(), 900, 600));
                     primaryStage.setResizable(false);
                     primaryStage.setFullScreen(false);
-//                }
-
+                }
+                else
+                    usernameTextField.setText("username not found");
             }
-
+            else
+                usernameTextField.setText("please enter username");
         });
         
         createAccountButton.setOnAction(e -> {
