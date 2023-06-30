@@ -14,6 +14,15 @@ public class PatientFiles {
         patientInfoFiles = getAllPatientInfoFiles();
     }
 
+    public boolean usernameExists(String username)
+    {
+        for (String filenames : patientInfoFiles) {
+            if (filenames.contains(username)) 
+                return true;
+        }
+        return false;
+    }
+
     public File createPatientInfoFile(String username) throws IOException {
         boolean fileExists = false;
         // check for patient question file
