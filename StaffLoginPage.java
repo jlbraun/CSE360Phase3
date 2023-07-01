@@ -8,11 +8,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class StaffLoginPage {
@@ -64,8 +61,7 @@ public class StaffLoginPage {
             // Handle login button click
             if (!usernameTextField.equals("")) {
                 PatientFiles patientFiles = new PatientFiles();
-                if (patientFiles.usernameExists(usernameTextField.getText())) {
-                	
+                if (patientFiles.usernameExists(usernameTextField.getText())) {      
                 	File file;
                     PatientFiles patientFilesLogin = new PatientFiles();
                     try  { file = patientFiles.createPatientInfoFile(usernameTextField.getText());
