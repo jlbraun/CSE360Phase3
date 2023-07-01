@@ -58,7 +58,7 @@ public class ViewPatientInfo {
             primaryStage.setFullScreen(false);
         });
         
-        Path filePath = Path.of("C:\\Users\\jlbdv\\eclipse-workspace\\javafxtest\\src\\application\\PatientInfoFiles\\" + username +  "_patientMessage.txt");
+        Path filePath = Path.of("C:\\Users\\jlbdv\\eclipse-workspace\\javafxtest\\src\\application\\PatientInfoFiles\\" + username +  "_patientInfo.txt");
         try {
         	String content = Files.readString(filePath);
         	messageTextArea.setText(content);
