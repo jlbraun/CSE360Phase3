@@ -51,10 +51,10 @@ public class PatientPortal {
         });
         
         viewPatientButton.setOnAction(e -> {
-        	//UpdatePatientInfo update = new UpdatePatientInfo(primaryStage, username);
-        	//primaryStage.setScene(new Scene(update.getRoot(), 900, 600));
-            //primaryStage.setResizable(false);
-            //primaryStage.setFullScreen(false);
+        	ViewPatientInfo viewPatientInfo = new ViewPatientInfo(primaryStage, username);
+        	primaryStage.setScene(new Scene(viewPatientInfo.getRoot(), 900, 600));
+            primaryStage.setResizable(false);
+            primaryStage.setFullScreen(false);
         });
         
         updatePatientButton.setOnAction(e -> {
