@@ -11,6 +11,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
+
 public class PatientPortal {
 
     private GridPane root;
@@ -44,8 +46,13 @@ public class PatientPortal {
         updatePatientButton.setPadding(new Insets(10, 10, 10, 10));
 
         messageButton.setOnAction(e -> {
-        	MessagePortal messagePortal = new MessagePortal(primaryStage, username);
-        	primaryStage.setScene(new Scene(messagePortal.getRoot(), 900, 600));
+            MessagePortal messagePortal = null;
+            try {
+                messagePortal = new MessagePortal(primaryStage, username);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            primaryStage.setScene(new Scene(messagePortal.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);
         });
@@ -96,7 +103,7 @@ public class PatientPortal {
         root.setHgap(50);
         root.setVgap(100);
         root.setPadding(new Insets(10));
-        root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         root.add(topBox, 0, 0);
         root.add(titleLabel, 1, 0);
         root.add(buttonBox, 1, 1);

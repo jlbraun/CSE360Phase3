@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class StaffPortal {
 
     private VBox root;
@@ -39,7 +41,7 @@ public class StaffPortal {
             primaryStage.setFullScreen(false);
         });
         
-     // Add event handlers for the buttons
+        // Add event handlers for the buttons
         nurseQuestionsButton.setOnAction(e -> {
             // Handle staff login button click
             NurseQuestions nurseQuestions = new NurseQuestions(primaryStage, username);
@@ -48,7 +50,7 @@ public class StaffPortal {
             primaryStage.setFullScreen(false);
         });
         
-     // Add event handlers for the buttons
+        // Add event handlers for the buttons
         doctorExamButton.setOnAction(e -> {
             // Handle staff login button click
             DoctorExam doctorExam = new DoctorExam(primaryStage, username);
@@ -59,7 +61,12 @@ public class StaffPortal {
         
         messageButton.setOnAction(e -> {
             // Handle patient login button click
-            MessagePortalStaff messagePortalStaff = new MessagePortalStaff(primaryStage, username);
+            MessagePortalStaff messagePortalStaff = null;
+            try {
+                messagePortalStaff = new MessagePortalStaff(primaryStage, username);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             primaryStage.setScene(new Scene(messagePortalStaff.getRoot(), 900, 600));
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);

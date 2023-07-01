@@ -1,8 +1,9 @@
-package prototype.demo;
+package application;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class PatientFiles {
 
     public PatientFiles() {
         patientInfoFiles = getAllPatientInfoFiles();
+
     }
 
     public boolean usernameExists(String username)
@@ -35,7 +37,7 @@ public class PatientFiles {
 
         if (!fileExists) {
             // create file name
-            String filename = username + "_PatientInformation.txt";
+            String filename = username + "_patientInfo.txt";
             File patientQuestionFile = new File("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\PatientInfoFiles\\" + filename);
             return patientQuestionFile;
         }
@@ -89,5 +91,33 @@ public class PatientFiles {
             fileWriter.flush();
             fileWriter.close();
         }
+    }
+
+    public File getMessageFile(String username) {
+        return new File("C:\\Users\\LoNeZiLLa\\Documents\\ASU\\Classes\\Summer 2023\\CSE 360\\Class Project\\Phase 3\\prototype\\demo\\src\\main\\java\\prototype\\demo\\PatientInfoFiles\\" + username + "_patientMessage.txt");
+    }
+
+    public void writeSentMessage(String username, String messageText, boolean isPatient) throws IOException {
+        File file = getMessageFile(username);
+        if (file != null) {
+            FileWriter fileWriter = new FileWriter(file, true);
+            if (isPatient)
+                fileWriter.write(username + ": " + messageText + '\n');
+            else
+                fileWriter.write("Staff: " + messageText + '\n');
+            fileWriter.flush();
+            fileWriter.close();
+        }
+    }
+
+    public String readMessageFile(String username) throws IOException {
+        File file = getMessageFile(username);
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        String messageText = "";
+        String message = "";
+        while ((message = bufferedReader.readLine()) != null) {
+            messageText += message + '\n';
+        }
+        return messageText;
     }
 }

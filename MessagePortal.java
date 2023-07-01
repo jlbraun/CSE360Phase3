@@ -10,6 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class MessagePortal {
 
     private GridPane root;
@@ -18,13 +20,13 @@ public class MessagePortal {
     private TextArea inputTextArea;
     private TextArea messageTextArea;
 
-    public MessagePortal(Stage primaryStage, String username) {
+    public MessagePortal(Stage primaryStage, String username) throws IOException {
         this.primaryStage = primaryStage;
         this.username = username;
-        createPatientPortal();
+        createMessagePortal();
     }
 
-    private void createPatientPortal() {
+    private void createMessagePortal() throws IOException {
     	Label titleLabel = new Label("Message Portal");
         titleLabel.getStyleClass().add("patient-home");
         
@@ -36,11 +38,20 @@ public class MessagePortal {
         messageTextArea.setEditable(false);
         messageTextArea.setPrefHeight(150);
         messageTextArea.setMinWidth(350);
+        PatientFiles patientFiles = new PatientFiles();
+        String messageTextString = patientFiles.readMessageFile(username);
+        messageTextArea.setText(messageTextString);
 
         // Create send button
         Button sendButton = new Button("Send");
         sendButton.getStyleClass().add("dark-button");
-        sendButton.setOnAction(event -> sendMessage());
+        sendButton.setOnAction(event -> {
+            try {
+                sendMessage();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         
         Label sendMessage = new Label("New Message");
         Button returnButton = new Button("Return to Patient Portal");
@@ -86,7 +97,7 @@ public class MessagePortal {
         root.setHgap(50);
         root.setVgap(90);
         root.setPadding(new Insets(10));
-        root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         root.add(topBox, 0, 0);
         root.add(titleLabel, 1, 0);
         root.add(sendMessage, 0, 1);
@@ -99,10 +110,13 @@ public class MessagePortal {
         
     }
 
-    private void sendMessage() {
+    private void sendMessage() throws IOException {
         String message = inputTextArea.getText();
-        if(!message.isEmpty())
-        	messageTextArea.appendText(message + "\n");
+        if(!message.isEmpty()) {
+            messageTextArea.appendText(username + ": " + message + "\n");
+            PatientFiles patientFiles = new PatientFiles();
+            patientFiles.writeSentMessage(username, message, true);
+        }
         inputTextArea.clear();
     }
     

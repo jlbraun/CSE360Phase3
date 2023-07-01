@@ -1,4 +1,4 @@
-package prototype.demo;
+package application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -55,12 +55,22 @@ public class StaffLoginPage {
             primaryStage.setFullScreen(false);
         });
         
+
         loginButton.setOnAction(e -> {
-            // Handle staff login button click
-            StaffPortal staffPortal = new StaffPortal(primaryStage, usernameTextField.getText());
-            primaryStage.setScene(new Scene(staffPortal.getRoot(), 900, 600));
-            primaryStage.setResizable(false);
-            primaryStage.setFullScreen(false);
+            // Handle login button click
+            if (!usernameTextField.equals("")) {
+                PatientFiles patientFiles = new PatientFiles();
+                if (patientFiles.usernameExists(usernameTextField.getText())) {
+                    StaffPortal staffPortal = new StaffPortal(primaryStage, usernameTextField.getText());
+                    primaryStage.setScene(new Scene(staffPortal.getRoot(), 900, 600));
+                    primaryStage.setResizable(false);
+                    primaryStage.setFullScreen(false);
+                }
+                else
+                    usernameTextField.setText("username not found");
+                }
+            else
+                usernameTextField.setText("please enter username");
         });
         
         createAccountButton.setOnAction(e -> {
