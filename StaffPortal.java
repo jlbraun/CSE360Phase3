@@ -1,4 +1,4 @@
-package prototype.demo;
+package application;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -27,6 +27,7 @@ public class StaffPortal {
         Button doctorExamButton = new Button("Doctor Examination");
         Button messageButton = new Button("Message Portal");
         Button updatePatientInfoButton = new Button("Update Patient Information");
+        Button viewPatientInfoButton = new Button("View Patient Information");
         Button exitButton = new Button("Exit");
 
         // Add event handlers for the buttons
@@ -79,12 +80,19 @@ public class StaffPortal {
             primaryStage.setResizable(false);
             primaryStage.setFullScreen(false);
         });
+        
+        viewPatientInfoButton.setOnAction(e -> {
+        	ViewPatientInfoStaff viewPatientInfoStaff = new ViewPatientInfoStaff(primaryStage, username);
+        	primaryStage.setScene(new Scene(viewPatientInfoStaff.getRoot(), 900, 600));
+            primaryStage.setResizable(false);
+            primaryStage.setFullScreen(false);
+        });
 
         // Create a VBox to hold the buttons
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
 //        root.setPadding(new Insets(20));
-        root.getChildren().addAll(nurseExamButton, nurseQuestionsButton, doctorExamButton, messageButton, updatePatientInfoButton, exitButton);
+        root.getChildren().addAll(nurseExamButton, nurseQuestionsButton, doctorExamButton, messageButton, viewPatientInfoButton, updatePatientInfoButton, exitButton);
         //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Set spacing between the buttons
