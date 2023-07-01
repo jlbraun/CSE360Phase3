@@ -1,4 +1,8 @@
 package application;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -61,6 +65,28 @@ public class StaffLoginPage {
             if (!usernameTextField.equals("")) {
                 PatientFiles patientFiles = new PatientFiles();
                 if (patientFiles.usernameExists(usernameTextField.getText())) {
+                	
+                	File file;
+                    PatientFiles patientFilesLogin = new PatientFiles();
+                    try  { file = patientFiles.createPatientInfoFile(usernameTextField.getText());
+                    }
+                    catch (IOException ex) { throw new RuntimeException(ex); }
+
+                    if (file != null) {
+                        try {  
+                        	
+                            FileWriter fileWriter = new FileWriter(file, true);
+                            fileWriter.write('\n' + "********************* New Appointment *********************** ");
+                            fileWriter.flush();
+                            fileWriter.close();
+
+                        }
+                        catch (IOException ex) { throw new RuntimeException(ex); }
+                    }
+                	
+                	
+                	
+                	
                     StaffPortal staffPortal = new StaffPortal(primaryStage, usernameTextField.getText());
                     primaryStage.setScene(new Scene(staffPortal.getRoot(), 900, 600));
                     primaryStage.setResizable(false);
