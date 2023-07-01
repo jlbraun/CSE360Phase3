@@ -1,4 +1,4 @@
-package prototype.demo;
+package application;
 
 import javafx.geometry.Insets; 
 import javafx.geometry.Pos;
@@ -31,13 +31,11 @@ public class NurseQuestions {
         
         Text questionTitle = new Text();
         questionTitle.setText("Nurse questionnaire:");
-        Text patientUsernameLabel = new Text();
-        patientUsernameLabel.setText("Patient Username: ");
+       
         Text questionLabel = new Text();
         questionLabel.setText("Add patient information to file:");
 
-        TextField patientUsername = new TextField();
-        patientUsername.setMaxWidth(200);
+
         TextField nurseQuestions = new TextField();
         nurseQuestions.setMaxWidth(800);
 
@@ -47,12 +45,12 @@ public class NurseQuestions {
         addInformation.setOnAction(e -> {
             File file;
             PatientFiles patientFiles = new PatientFiles();
-            try  { file = patientFiles.createPatientInfoFile(patientUsername.getText());
+            try  { file = patientFiles.createPatientInfoFile(username);
             }
             catch (IOException ex) { throw new RuntimeException(ex); }
 
             if (file != null) {
-                try { patientFiles.saveQuestionInfo(patientUsername.getText(), nurseQuestions.getText());
+                try { patientFiles.saveQuestionInfo(username, nurseQuestions.getText());
                 }
                 catch (IOException ex) { throw new RuntimeException(ex); }
             }
@@ -70,12 +68,11 @@ public class NurseQuestions {
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
 //        root.setPadding(new Insets(20));
-        root.getChildren().addAll(questionTitle, patientUsernameLabel, patientUsername,  questionLabel, nurseQuestions, addInformation, returnButton);
+        root.getChildren().addAll(questionTitle, questionLabel, nurseQuestions, addInformation, returnButton);
         //root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Set spacing between the buttons
         VBox.setMargin(questionLabel, new Insets(10, 0, 0, 0));
-        VBox.setMargin(patientUsernameLabel, new Insets(10, 0, 0, 0));
     }
 
     public VBox getRoot() {
