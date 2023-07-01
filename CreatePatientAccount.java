@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.io.IOException;
-
+ 
 public class CreatePatientAccount {
 
     private GridPane root;
