@@ -1,5 +1,9 @@
 package application;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -146,16 +150,71 @@ public class UpdatePatientInfo {
     private void updatePhoneNumber() {
         phoneNumber = phoneNumberField.getText();
         setContactInformation();
+        
+        File file;
+        PatientFiles patientFiles = new PatientFiles();
+        try  { file = patientFiles.createPatientInfoFile(username);
+        }
+        catch (IOException ex) { throw new RuntimeException(ex); }
+
+        if (file != null) {
+            try {  
+            	
+                FileWriter fileWriter = new FileWriter(file, true);
+                fileWriter.write('\n' + "Phone number Updated: " + phoneNumber);
+                fileWriter.flush();
+                fileWriter.close();
+
+            }
+            catch (IOException ex) { throw new RuntimeException(ex); }
+        }
+        
     }
 
     private void updateInsurance() {
         insuranceInfo = insuranceField.getText();
         setContactInformation();
+        
+        File file;
+        PatientFiles patientFiles = new PatientFiles();
+        try  { file = patientFiles.createPatientInfoFile(username);
+        }
+        catch (IOException ex) { throw new RuntimeException(ex); }
+
+        if (file != null) {
+            try {  
+            	
+                FileWriter fileWriter = new FileWriter(file, true);
+                fileWriter.write('\n' + "Insurance Information Updated: " + insuranceInfo);
+                fileWriter.flush();
+                fileWriter.close();
+
+            }
+            catch (IOException ex) { throw new RuntimeException(ex); }
+        }
     }
 
     private void updatePharmacy() {
         pharmacyInfo = pharmacyField.getText();
         setContactInformation();
+        
+        File file;
+        PatientFiles patientFiles = new PatientFiles();
+        try  { file = patientFiles.createPatientInfoFile(username);
+        }
+        catch (IOException ex) { throw new RuntimeException(ex); }
+
+        if (file != null) {
+            try {  
+            	
+                FileWriter fileWriter = new FileWriter(file, true);
+                fileWriter.write('\n' + "Pharmacy Information Upfated: " + pharmacyInfo);
+                fileWriter.flush();
+                fileWriter.close();
+
+            }
+            catch (IOException ex) { throw new RuntimeException(ex); }
+        }
     }
     
     private void setContactInformation() {
