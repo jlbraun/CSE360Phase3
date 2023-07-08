@@ -1,4 +1,4 @@
-package prototype.demo;
+package application;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
